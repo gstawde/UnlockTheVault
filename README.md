@@ -14,12 +14,11 @@
   - Front-end: HTML, CSS, JS, Node
   - Back-end: Flask, Python
 ## PART E
-  Generating Vault Key: When a user starts a game, a 6 digit random key is generated. Each digit can be a number between 0 and 9 inclusive. The user cannot see this key, as they are supposed to guess it.\
+  Generating Vault Key: When a user starts a game, a 6 digit random key is generated, where the key rather than containing numbers has specifications for what type of number must be in each spot. Each digit can be a number between 0 and 9 inclusive. There is not one correct solution. Rather, each spot will indicate its relation to the previous spot (e.g. Spot 2 must be < Spot 1).\
   Hints: \
     - Each user gets up to 3 hints.\
     - When a user requests a hint, the current guesses for each digit will be evaluated\
     - If the digit is incorrect, the box with that digit will turn red; the number guessed will then be evaluated against the correct digit\
-    - Whether the guess is less or greater than the correct number will be shown for all incorrect guesses\
     - If the digit is correct, box with that digit will turn green
 ## PART F
   This game is simple to learn, yet still challenging enough to be consistently engaging.\
