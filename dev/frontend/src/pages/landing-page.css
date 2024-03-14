@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Inconsolata:wght@200..900&display=swap');
+
+body {
+    font-family: "Inconsolata", monospace;
+    scroll-behavior: smooth;
+}
+
+button {
+    font-family: "Inconsolata", monospace;
+}
+
+.landing-view1 {
+    background-color: #FFFFFF;
+}
+
+.landing-view1-login {
+    float: right;
+    background-color: #309B35;
+    border: none;
+    color: #FFF;
+    padding: 13px 30px;
+    margin: 17px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.landing-view1-login:hover {
+    box-shadow: 0 0 25px 6px #737373;
+}
+
+.landing-view1-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    padding: 220px 100px 390px;
+}
+
+.landing-view2 {
+    background-color: #309B35;
+    width: 100%;
+    height: 880px;
+}
+
+.landing-view2-header {
+    font-size: 70px;
+    padding-top: 230px;
+    color: #FFFFFF;
+    padding-left: 90px;
+}
+
+.landing-view2-logo {
+    display: flex;
+    width: 40%;
+    flex: 33.33%;
+    padding: 5px 5px 5px 90px;
+}
+
+.landing-view3 {
+    background-color: #FFFFFF;
+    height: 860px;
+}
+
+.landing-view3-header {
+    font-size: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding-top: 315px;
+    width: 50%;
+    color: #737373;
+    font-weight: bold;
+}
+
+.landing-view3-signup {
+    background-color: #C72721;
+    border: none;
+    color: #FFFFFF;
+    padding: 13px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 22px;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+}
+
+.landing-view3-signup:hover {
+    box-shadow: 0 0 25px 6px #737373;
+}
+
+.landing-view3-play {
+    background-color: #309B35;
+    border: none;
+    color: #FFFFFF;
+    padding: 13px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 22px;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+}
+
+.landing-view3-play:hover {
+    box-shadow: 0 0 25px 6px #737373;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-top: 30px;
+    text-align: left;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
