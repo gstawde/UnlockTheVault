@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Inconsolata:wght@200..900&display=swap');
+
+body {
+    font-family: "Inconsolata", monospace;
+    scroll-behavior: smooth;
+}
+
+.landing-page {
+    padding: 8px 35px;
+    font-size: 16px;
+    border: none;
+    background-color: #309B35;
+    cursor: pointer;
+}
+
+h1 {
+    font-size: 45px;
+    padding-top: 150px;
+}
+
+.column {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+button {
+    background-color: #737373;
+    color: #FFFFFF;
+    padding: 8px 35px;
+    font-size: 22px;
+    border-radius: 10px;
+    margin: 3px auto;
+    font-weight: bold;
+}
+
+.game-rules {
+    font-size: 12px;
+    padding: 3px 7px;
+    margin: 1px auto;
+}
+
+.game-rules:hover {
+    cursor: pointer;
+}
+
+.hints:hover {
+    background-color: #309B35;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background-color: #C72721;
+    cursor: pointer;
+}
+
+.solution:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.solution {
+    background-color: #309B35;
+}
+
+.column {
+    text-align: center;
+}

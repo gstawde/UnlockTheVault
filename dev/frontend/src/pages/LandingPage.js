@@ -30,7 +30,7 @@ const LandingPage = () => {
                             </a>
                         </div>
                         <div className="column">
-                            <a href="/play">
+                            <a href="/game">
                                 <button className="landing-view3-play">Play!</button>
                             </a>
                         </div>
