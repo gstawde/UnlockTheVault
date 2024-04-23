@@ -79,7 +79,7 @@ const GamePage = () => {
             <a href="/">
                 <button className="landing-page">Back to the Landing Page</button>
             </a>
-            <h1>Guess the numbers, Unlock the Vault!<button class="game-rules" onClick={gameRules}>test</button></h1>
+            <h1>Guess the numbers, Unlock the Vault!<button class="game-rules" onClick={gameRules}>Rules</button></h1>
             <div class="row">
                 <div class="column">
                     <input type="text" id="one" value={inputValueOne} onChange={(event) => GameLogic.handleInputChangeOne(event, setInputValueOne)} style={{ backgroundColor: backgroundColorOne }} />
