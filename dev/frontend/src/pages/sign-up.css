@@ -34,23 +34,33 @@ input[type=text], select {
     box-sizing: border-box;
 }
 
-input[type=submit] {
+input[type=password], select {
     width: 100%;
-    background-color: #309B35;
-    color: white;
-    font-size: 20px;
-    padding: 14px 20px;
+    padding: 12px 20px;
     margin: 8px 0;
-    border: none;
+    display: inline-block;
+    border: 1px solid #ccc;
     border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-input[type=submit]:hover {
-    box-shadow: 0 0 20px 3px #737373;
+    box-sizing: border-box;
 }
 
 label {
     font-weight: bold;
+}
+
+.sign-up:hover {
+    background-color: #309B35;
+}
+
+.show-pass-row {
+    display: flex;
+}
+
+.show-pass-button {
+    font-size: 12px;
+    padding: 1px;
+}
+
+.show-pass-button:hover {
+    background-color: #C72721;
 }

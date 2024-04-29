@@ -77,7 +77,7 @@ const GamePage = () => {
         </head>
         <body>
             <a href="/">
-                <button className="landing-page">Back to the Landing Page</button>
+                <button className="landing-page">Home</button>
             </a>
             <h1>Guess the numbers, Unlock the Vault!<button class="game-rules" onClick={gameRules}>Rules</button></h1>
             <div class="row">
@@ -116,6 +116,22 @@ const GamePage = () => {
                 </div>
                 <div className="column">
                     <button class="solution" onClick={provideSolution} disabled={hintsLeft > 0}>SOLUTION</button>
+                </div>
+            </div>
+            <br/>
+            <div className="row">
+                <div className="column">
+                    <h2>Want to save this game and future ones?</h2>
+                    <a href="/signup">
+                        <button className="sign-up-button">Sign Up</button>
+                    </a>
+                </div>
+                <div className="column">
+                    <h2>Want to save this game and already have an account?</h2>
+                    <a href="/login">
+                        <button className="login-button">Log In</button>
+                    </a>
+
                 </div>
             </div>
         </body>

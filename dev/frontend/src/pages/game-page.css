@@ -65,3 +65,22 @@ button {
 .column {
     text-align: center;
 }
+
+
+.sign-up-button {
+    background-color: #C72721;
+    color: white;
+}
+
+.sign-up-button:hover {
+    box-shadow: 0 0 20px 6px #737373;
+}
+
+.login-button {
+    background-color: #309B35;
+    color: white;
+}
+
+.login-button:hover {
+    box-shadow: 0 0 20px 6px #737373;
+}
