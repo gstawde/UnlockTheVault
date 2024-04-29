@@ -34,23 +34,19 @@ input[type=text], select {
     box-sizing: border-box;
 }
 
-input[type=submit] {
-    width: 100%;
-    background-color: #309B35;
-    color: white;
-    font-size: 20px;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-input[type=submit]:hover {
-    box-shadow: 0 0 20px 3px #737373;
-}
-
 label {
     font-weight: bold;
+}
+
+.login:hover {
+    background-color: #309B35;
+}
+
+.show-pass-button {
+    font-size: 12px;
+    padding: 1px;
+}
+
+.show-pass-button:hover {
+    background-color: #C72721;
 }
