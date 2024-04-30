@@ -3,6 +3,9 @@ import UnlockLogo from '../assets/unlockLogo.png';
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import bcrypt from 'bcryptjs';
+import { Slide, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -58,9 +61,12 @@ const SignUp = () => {
         return "This is not a valid password option. Make sure it is at least 10 characters.";
     };
 
+    // Notifies user of what's wrong with their form input
+    const notify = (warning) => toast.error(warning);
+
     const handleSignUp = () => {
         if (username.trim() === '' || password.trim() === '' || fName.trim() === '' || lName.trim() === '') {
-            alert('You missed a spot! Make sure none of the form fields are empty.');
+            notify('You missed a spot! Make sure none of the form fields are empty.');
         } else {
             // Validate new user input
             let validatedInfo = validateNewAccountInfo();
@@ -68,7 +74,7 @@ const SignUp = () => {
             handleHashPassword();
             // display provided user info
             if (validatedInfo != null) {
-                alert(validatedInfo);
+                notify(validatedInfo);
             }
             // alert('The user info you provided includes the following:\n' +
             //     'First Name: ' + fName +'\nLast Name: ' + lName + '\n' +
@@ -109,6 +115,10 @@ const SignUp = () => {
                 </div>
 
                 <button type="button" className="sign-up" onClick={handleSignUp}>Sign Up</button>
+                <ToastContainer
+                    position="top-center"
+                    transition={Slide}
+                />
             </form>
         </body>
         </html>

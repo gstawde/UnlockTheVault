@@ -1,5 +1,7 @@
 import './game-page.css';
 import UnlockLogo from '../assets/unlockLogo.png';
+import { Slide, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import React, { useState, useEffect } from 'react';
 import * as GameLogic from './GameLogic';
 
@@ -44,6 +46,8 @@ const GamePage = () => {
         GameLogic.handleButtonClick('six', inputValueSix, backgroundColorSix, setBackgroundColorSix, setHintSix);
     };
 
+    const notify = () => toast.warning("Oh no, you've run out of hints! However, you can now request a \'Solve\'!");
+
     const handleHintClick = () => {
         if (hintsLeft > 0) {
             setHintsLeft(hintsLeft - 1);
@@ -54,7 +58,7 @@ const GamePage = () => {
             GameLogic.handleHintButton(inputValueFive, setHintFive, 5);
             GameLogic.handleHintButton(inputValueSix, setHintSix, 6);
         } else {
-            alert('Sorry! You have no more hints left :(\nBut you can now request a solution to the puzzle!'); // Alert when no hints left
+            notify(); // Alert when no hints left
         }
     };
 
@@ -109,6 +113,9 @@ const GamePage = () => {
             <div class="row">
                 <div class="column">
                     <button class="hints" onClick={handleHintClick}>HINTS</button>
+                    <ToastContainer
+                        transition={Slide}
+                    />
                     <p>Hint(s) left: {hintsLeft}</p>
                 </div>
                 <div className="column">

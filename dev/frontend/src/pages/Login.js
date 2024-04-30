@@ -1,6 +1,8 @@
 import './login.css';
 import React, { useState } from 'react';
 import UnlockLogo from '../assets/unlockLogo.png';
+import { Slide, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -12,9 +14,12 @@ const Login = () => {
         setShowPassword(!showPassword);
     };
 
+    // Notifies user of what's wrong with their form input
+    const notify = (warning) => toast.error(warning);
+
     const handleLogin = () => {
         if (username.trim() === '' || password.trim() === '') {
-            alert('You missed a spot! Make sure to provide both a username AND password.');
+            notify('You missed a spot! Make sure to provide both a username AND password.');
         } else {
             // Perform login logic here
             console.log('Logging in...');
@@ -40,6 +45,10 @@ const Login = () => {
                     <button className="show-pass-button" onClick={handleTogglePassword}>{showPassword ? 'Hide Password' : 'Show Password'}</button>
                 </div>
                 <button type="button" className="login" onClick={handleLogin}>Login</button>
+                <ToastContainer
+                    position="top-center"
+                    transition={Slide}
+                />
             </form>
         </body>
         </html>
