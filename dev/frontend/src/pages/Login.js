@@ -34,7 +34,7 @@ const Login = () => {
             <title>Unlock the Vault</title>
         </head>
         <body>
-            <img className="logo" src={UnlockLogo} alt="Unlock the Vault Logo"/>
+            {/*<img className="logo" src={UnlockLogo} alt="Unlock the Vault Logo"/>*/}
             <h1>Welcome Back!</h1>
             <form>
                 <label htmlFor="username">Username</label>

@@ -22,12 +22,12 @@ const GamePage = () => {
     const [inputValueFive, setInputValueFive] = useState('');
     const [inputValueSix, setInputValueSix] = useState('');
 
-    const [backgroundColorOne, setBackgroundColorOne] = useState('#FFFFFF'); // Default white color for box one
-    const [backgroundColorTwo, setBackgroundColorTwo] = useState('#FFFFFF'); // Default white color for box two
-    const [backgroundColorThree, setBackgroundColorThree] = useState('#FFFFFF'); // Default white color for box two
-    const [backgroundColorFour, setBackgroundColorFour] = useState('#FFFFFF'); // Default white color for box two
-    const [backgroundColorFive, setBackgroundColorFive] = useState('#FFFFFF'); // Default white color for box two
-    const [backgroundColorSix, setBackgroundColorSix] = useState('#FFFFFF'); // Default white color for box two
+    const [backgroundColorOne, setBackgroundColorOne] = useState('#FFFFFF');
+    const [backgroundColorTwo, setBackgroundColorTwo] = useState('#FFFFFF');
+    const [backgroundColorThree, setBackgroundColorThree] = useState('#FFFFFF');
+    const [backgroundColorFour, setBackgroundColorFour] = useState('#FFFFFF');
+    const [backgroundColorFive, setBackgroundColorFive] = useState('#FFFFFF');
+    const [backgroundColorSix, setBackgroundColorSix] = useState('#FFFFFF');
 
     const [hintOne, setHintOne] = useState('');
     const [hintTwo, setHintTwo] = useState('');
@@ -37,28 +37,45 @@ const GamePage = () => {
     const [hintSix, setHintSix] = useState('');
     const [hintsLeft, setHintsLeft] = useState(5);
 
+    const notify = (warning) => toast.warning(warning);
+    const notifyError = (warning) => toast.error(warning);
+
     const handleSubmitClick = () => {
-        GameLogic.handleButtonClick('one', inputValueOne, backgroundColorOne, setBackgroundColorOne, setHintOne);
-        GameLogic.handleButtonClick('two', inputValueTwo, backgroundColorTwo, setBackgroundColorTwo, setHintTwo);
-        GameLogic.handleButtonClick('three', inputValueThree, backgroundColorThree, setBackgroundColorThree, setHintThree);
-        GameLogic.handleButtonClick('four', inputValueFour, backgroundColorFour, setBackgroundColorFour, setHintFour);
-        GameLogic.handleButtonClick('five', inputValueFive, backgroundColorFive, setBackgroundColorFive, setHintFive);
-        GameLogic.handleButtonClick('six', inputValueSix, backgroundColorSix, setBackgroundColorSix, setHintSix);
+        if (isCompletelyEmpty()) {
+            notifyError("You didn't provide any guesses. Try putting in at least one number in a spot before submitting!")
+        } else {
+            GameLogic.handleButtonClick('one', inputValueOne, backgroundColorOne, setBackgroundColorOne, setHintOne);
+            GameLogic.handleButtonClick('two', inputValueTwo, backgroundColorTwo, setBackgroundColorTwo, setHintTwo);
+            GameLogic.handleButtonClick('three', inputValueThree, backgroundColorThree, setBackgroundColorThree, setHintThree);
+            GameLogic.handleButtonClick('four', inputValueFour, backgroundColorFour, setBackgroundColorFour, setHintFour);
+            GameLogic.handleButtonClick('five', inputValueFive, backgroundColorFive, setBackgroundColorFive, setHintFive);
+            GameLogic.handleButtonClick('six', inputValueSix, backgroundColorSix, setBackgroundColorSix, setHintSix);
+        }
     };
 
-    const notify = () => toast.warning("Oh no, you've run out of hints! However, you can now request a \'Solve\'!");
+    const isCompletelyEmpty = () => {
+        return (inputValueOne === "" && inputValueTwo === "" && inputValueThree === "" && inputValueFour === "" && inputValueFive === "" && inputValueSix === "");
+    };
+
+
+    const [areHintsDisabled, setHintsDisabled] = useState(false);
 
     const handleHintClick = () => {
         if (hintsLeft > 0) {
-            setHintsLeft(hintsLeft - 1);
-            GameLogic.handleHintButton(inputValueOne, setHintOne, 1);
-            GameLogic.handleHintButton(inputValueTwo, setHintTwo, 2);
-            GameLogic.handleHintButton(inputValueThree, setHintThree, 3);
-            GameLogic.handleHintButton(inputValueFour, setHintFour, 4);
-            GameLogic.handleHintButton(inputValueFive, setHintFive, 5);
-            GameLogic.handleHintButton(inputValueSix, setHintSix, 6);
+            if (isCompletelyEmpty()) {
+                notifyError("Uh oh! You can't request a hint when you haven't filled in any of the spaces. Try putting in at least one number in a spot first.")
+            } else {
+                setHintsLeft(hintsLeft - 1);
+                GameLogic.handleHintButton(inputValueOne, setHintOne, 1);
+                GameLogic.handleHintButton(inputValueTwo, setHintTwo, 2);
+                GameLogic.handleHintButton(inputValueThree, setHintThree, 3);
+                GameLogic.handleHintButton(inputValueFour, setHintFour, 4);
+                GameLogic.handleHintButton(inputValueFive, setHintFive, 5);
+                GameLogic.handleHintButton(inputValueSix, setHintSix, 6);
+            }
         } else {
-            notify(); // Alert when no hints left
+            notify("Oh no, you've run out of hints! However, you can now request a solution by clicking 'Solve'!"); // Alert when no hints left
+            setHintsDisabled(true);
         }
     };
 
@@ -112,7 +129,7 @@ const GamePage = () => {
             </div>
             <div class="row">
                 <div class="column">
-                    <button class="hints" onClick={handleHintClick}>HINTS</button>
+                    <button class="hints" onClick={handleHintClick} disabled={areHintsDisabled}>HINTS</button>
                     <ToastContainer
                         transition={Slide}
                     />
@@ -122,7 +139,7 @@ const GamePage = () => {
                     <button class="submit" onClick={handleSubmitClick}>SUBMIT</button>
                 </div>
                 <div className="column">
-                    <button class="solution" onClick={provideSolution} disabled={hintsLeft > 0}>SOLUTION</button>
+                    <button class="solution" onClick={provideSolution} disabled={hintsLeft > 0}>SOLVE!</button>
                 </div>
             </div>
             <br/>
@@ -138,7 +155,6 @@ const GamePage = () => {
                     <a href="/login">
                         <button className="login-button">Log In</button>
                     </a>
-
                 </div>
             </div>
         </body>

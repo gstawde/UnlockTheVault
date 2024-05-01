@@ -40,6 +40,7 @@ label {
 
 .login:hover {
     background-color: #309B35;
+    cursor: pointer;
 }
 
 .show-pass-button {
@@ -49,4 +50,5 @@ label {
 
 .show-pass-button:hover {
     background-color: #C72721;
+    cursor: pointer;
 }
