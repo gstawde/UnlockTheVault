@@ -93,7 +93,6 @@ const SignUp = () => {
             <title>Unlock the Vault</title>
         </head>
         <body>
-            <img className="logo" src={UnlockLogo} alt="Unlock the Vault Logo"/>
             <h1>Sign Up Below!</h1>
             <form>
                 <label htmlFor="fName">First Name</label>

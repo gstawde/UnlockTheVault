@@ -50,6 +50,7 @@ label {
 
 .sign-up:hover {
     background-color: #309B35;
+    cursor: pointer;
 }
 
 .show-pass-row {

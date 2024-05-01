@@ -18,6 +18,14 @@ h1 {
     padding-top: 150px;
 }
 
+h2 {
+    font-size: 18px;
+}
+
+input {
+    font-size: 15px;
+}
+
 .column {
     padding-left: 5px;
     padding-right: 5px;
@@ -43,9 +51,14 @@ button {
     cursor: pointer;
 }
 
-.hints:hover {
+.hints:enabled {
     background-color: #309B35;
     cursor: pointer;
+}
+
+.hints:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .submit:hover {
@@ -56,6 +69,10 @@ button {
 .solution:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+.solution:enabled {
+    cursor: pointer;
 }
 
 .solution {
@@ -73,6 +90,7 @@ button {
 }
 
 .sign-up-button:hover {
+    cursor: pointer;
     box-shadow: 0 0 20px 6px #737373;
 }
 
@@ -82,5 +100,6 @@ button {
 }
 
 .login-button:hover {
+    cursor: pointer;
     box-shadow: 0 0 20px 6px #737373;
 }
