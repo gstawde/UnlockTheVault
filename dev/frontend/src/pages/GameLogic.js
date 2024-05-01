@@ -1,7 +1,14 @@
 let testArr = Array(6).fill(null);
-export const generateRandomNumbers = () => {
-    testArr = Array.from({ length: 6 }, () => Math.floor(Math.random() * 20) + 1);
-    return  testArr;
+export const generateRandomNumbers = (max) => {
+    let numbersSet = new Set();
+
+    while (numbersSet.size < 6) {
+        let randomNumber = Math.floor(Math.random() * max) + 1;
+        numbersSet.add(randomNumber);
+    }
+
+    testArr = Array.from(numbersSet);
+    return testArr;
 };
 
 export const handleInputChangeOne = (event, setInputValueOne) => {
