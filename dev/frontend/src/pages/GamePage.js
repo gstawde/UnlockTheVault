@@ -41,15 +41,19 @@ const GamePage = () => {
     const notifyError = (warning) => toast.error(warning);
 
     const handleSubmitClick = () => {
+        let numCorrect = 0;
         if (isCompletelyEmpty()) {
             notifyError("You didn't provide any guesses. Try putting in at least one number in a spot before submitting!")
         } else {
-            GameLogic.handleButtonClick('one', inputValueOne, backgroundColorOne, setBackgroundColorOne, setHintOne);
-            GameLogic.handleButtonClick('two', inputValueTwo, backgroundColorTwo, setBackgroundColorTwo, setHintTwo);
-            GameLogic.handleButtonClick('three', inputValueThree, backgroundColorThree, setBackgroundColorThree, setHintThree);
-            GameLogic.handleButtonClick('four', inputValueFour, backgroundColorFour, setBackgroundColorFour, setHintFour);
-            GameLogic.handleButtonClick('five', inputValueFive, backgroundColorFive, setBackgroundColorFive, setHintFive);
-            GameLogic.handleButtonClick('six', inputValueSix, backgroundColorSix, setBackgroundColorSix, setHintSix);
+            if (GameLogic.checkSubmittedGuess('one', inputValueOne, backgroundColorOne, setBackgroundColorOne, setHintOne)) numCorrect++;
+            if (GameLogic.checkSubmittedGuess('two', inputValueTwo, backgroundColorTwo, setBackgroundColorTwo, setHintTwo)) numCorrect++;
+            if (GameLogic.checkSubmittedGuess('three', inputValueThree, backgroundColorThree, setBackgroundColorThree, setHintThree)) numCorrect++;
+            if (GameLogic.checkSubmittedGuess('four', inputValueFour, backgroundColorFour, setBackgroundColorFour, setHintFour)) numCorrect++;
+            if (GameLogic.checkSubmittedGuess('five', inputValueFive, backgroundColorFive, setBackgroundColorFive, setHintFive)) numCorrect++;
+            if (GameLogic.checkSubmittedGuess('six', inputValueSix, backgroundColorSix, setBackgroundColorSix, setHintSix)) numCorrect++;
+        }
+        if (numCorrect === 6) {
+            alert("You win!!");
         }
     };
 
