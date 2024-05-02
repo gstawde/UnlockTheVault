@@ -84,7 +84,7 @@ const GamePage = () => {
     };
 
     const gameRules = () => {
-        alert('How to Play!\n- The game generates 6 random and unique numbers between 1 and 13.\n- Guess a number between 1 and 13 for each of the boxes below.\n-Click Submit to get your guesses evaluated.\n' +
+        alert('How to Play!\n- The game generates 6 random and unique numbers between 1 and 17.\n- Guess a number between 1 and 13 for each of the boxes below.\n-Click Submit to get your guesses evaluated.\n' +
             '- Correct answers will make the box green; incorrect will make them red.\n- You get up to 5 hints per game, and unlimited submissions.\n' +
             '- Hints will indicate if your incorrect guess is too high or low compared to the correct number.\n- Only after you\'ve used up all your guesses will you be able to see the solution to the puzzle.\nGOOD LUCK! :)');
     }
