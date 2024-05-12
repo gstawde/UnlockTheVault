@@ -17,7 +17,7 @@ db.init_app(app)
 with app.app_context():
     db.create_all()
 
-@app.route("/@me", methods=['GET', 'POST'])
+@app.route("/@me", methods=['GET'])
 def get_current_user():
     user_id = session.get("user_id")
 

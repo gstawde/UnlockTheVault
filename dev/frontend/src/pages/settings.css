@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Inconsolata:wght@200..900&display=swap');
+
+body {
+    font-family: "Inconsolata", monospace;
+    scroll-behavior: smooth;
+    font-size: 20px;
+}
+
+button {
+    font-family: "Inconsolata", monospace;
+}
+
+.navbar a {
+    float: right;
+    text-align: center;
+    padding: 14px 16px;
+    margin-top: 15px;
+    margin-left: 8px;
+    margin-right: 8px;
+    font-size: 19px;
+    background-color: #484848;
+    color: #FFFFFF;
+    border-radius: 10px;
+}
+
+.navbar a:hover {
+    box-shadow: 0 0 8px 6px #737373;
+}
+
+.navbar a.active {
+    background-color: #C72721;
+    color: #FFFFFF;
+}
+
+.split {
+    float: left;
+    padding: 10px;
+    width: 5%;
+}
+
+.user-information {
+    color: #3A7734;
+    font-weight: bold;
+}
