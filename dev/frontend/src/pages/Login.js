@@ -1,5 +1,6 @@
 import './login.css';
-import React, { useState } from 'react';
+import httpClient from '../httpClient.ts';
+import React, { useState, useEffect } from 'react';
 import UnlockLogo from '../assets/unlockLogo.png';
 import { Slide, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -7,6 +8,20 @@ import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [user, setUser] = useState(null);
+
+    // useEffect(() => {
+    //     (async () => {
+    //         try {
+    //             const resp = await httpClient.get("http://127.0.0.1:5000/@me");
+    //             setUser(resp.data);
+    //             console.log("Currently logged in")
+    //             // window.location.href = "/user-dashboard";
+    //         } catch (error) {
+    //             console.log("Not authenticated");
+    //         }
+    //     })();
+    // }, []);
 
     const [showPassword, setShowPassword] = useState(false);
     const handleTogglePassword = (e) => {
@@ -17,12 +32,22 @@ const Login = () => {
     // Notifies user of what's wrong with their form input
     const notify = (warning) => toast.error(warning);
 
-    const handleLogin = () => {
+    const handleLogin = async () => {
         if (username.trim() === '' || password.trim() === '') {
             notify('You missed a spot! Make sure to provide both a username AND password.');
         } else {
-            // Perform login logic here
-            console.log('Logging in...');
+            try {
+                const resp = await httpClient.post("http://127.0.0.1:5000/login", {
+                    username,
+                    password,
+                });
+                window.location.href = "/user-dashboard";
+                console.log("Correct credentials!");
+            } catch (e) {
+                if (e.response.status === 401) {
+                    notify('Invalid credentials. Try again.')
+                }
+            }
         }
     };
 
@@ -34,7 +59,6 @@ const Login = () => {
             <title>Unlock the Vault</title>
         </head>
         <body>
-            {/*<img className="logo" src={UnlockLogo} alt="Unlock the Vault Logo"/>*/}
             <h1>Welcome Back!</h1>
             <form>
                 <label htmlFor="username">Username</label>

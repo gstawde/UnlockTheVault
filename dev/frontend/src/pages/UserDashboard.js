@@ -1,8 +1,15 @@
 import './user-dashboard.css';
-
+import httpClient from '../httpClient.ts';
+import React, { useState, useEffect } from 'react';
+import { Slide, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import UnlockLogo from '../assets/unlockLogo.png';
 
 const UserDashboard = () => {
+
+    const [userID, setUserID] = useState(null);
+    const [userEmail, setUserEmail] = useState(null);
+
     return (
         <html lang="en">
         <head>
@@ -12,13 +19,13 @@ const UserDashboard = () => {
         </head>
         <body>
             <div className="navbar">
-                <a>Logout</a>
+                <a href="/">Logout</a>
                 <a href="/settings">Settings</a>
                 <a href="/game">Play!</a>
                 <a className="active" href="/user-dashboard">Dashboard</a>
                 <img className="split" src={UnlockLogo} alt="Unlock the Vault Logo"/>
             </div>
-            <h1>Username's Game History</h1>
+            <h1>Game History</h1>
             <div className="game-history">
                 <table>
                     <tr>
@@ -27,12 +34,12 @@ const UserDashboard = () => {
                         <th>Number of Hints Used</th>
                     </tr>
                     <tr>
-                        <td>03/14/2024</td>
+                        <td>05/10/2024</td>
                         <td>Win</td>
                         <td>0</td>
                     </tr>
                     <tr>
-                        <td>03/14/2024</td>
+                        <td>04/14/2024</td>
                         <td>Win</td>
                         <td>2</td>
                     </tr>
@@ -53,6 +60,10 @@ const UserDashboard = () => {
                     </tr>
                 </table>
             </div>
+            <ToastContainer
+                position="top-center"
+                transition={Slide}
+            />
         </body>
         </html>
 

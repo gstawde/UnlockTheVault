@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import bcrypt from 'bcryptjs';
 import { Slide, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import httpClient from "../httpClient.ts";
 
 
 const SignUp = () => {
@@ -15,10 +16,10 @@ const SignUp = () => {
     const [passwordRepeat, setPasswordRepeat] = useState('');
     const [fName, setFirstName] = useState('');
     const [lName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
 
     const [showPassword, setShowPassword] = useState(false);
     const [showPasswordRepeat, setShowPasswordRepeat] = useState(false);
-    const [hashedPassword, setHashedPassword] = useState('');
 
     const handleTogglePassword = (e) => {
         e.preventDefault(); // Prevent the default form submission
@@ -39,26 +40,31 @@ const SignUp = () => {
 
     };
 
-    const handleHashPassword = () => {
-        const saltRounds = 10; // Number of salt rounds for bcrypt
-        bcrypt.hash(password, saltRounds, (err, hash) => {
-            if (err) {
-                console.error(err);
-            } else {
-                setHashedPassword(hash);
-            }
-        });
-    };
-
-    const validateNewAccountInfo = () => {
+    const validateNewAccountInfo = async () => {
         if (!passwordsMatch()) {
             return "The provided passwords do not match.";
         }
         if (validPasswordLengthCheck()) {
-            navigate('/login');
-            return;
+            try {
+                const resp = await httpClient.post("http://127.0.0.1:5000/register", {
+                    "username": username,
+                    "first_name": fName,
+                    "last_name": lName,
+                    "email": email,
+                    "password": password,
+                });
+                window.location.href = "/login";
+                // notify("success");
+            } catch (e) {
+                if (e.response && e.response.status === 409) {
+                    notify('This user already exists.');
+                } else {
+                    console.error('Unexpected error:', e);
+                }
+            }
+        } else {
+            notify('This is not a valid password option. Make sure it is at least 10 characters.');
         }
-        return "This is not a valid password option. Make sure it is at least 10 characters.";
     };
 
     // Notifies user of what's wrong with their form input
@@ -70,8 +76,6 @@ const SignUp = () => {
         } else {
             // Validate new user input
             let validatedInfo = validateNewAccountInfo();
-            // password hash
-            handleHashPassword();
             // display provided user info
             if (validatedInfo != null) {
                 notify(validatedInfo);
@@ -101,6 +105,8 @@ const SignUp = () => {
                 <input type="text" id="lnName" name="lastName" placeholder="Last Name" value={lName} onChange={(e) => setLastName(e.target.value)}/>
                 <label htmlFor="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}/>
+                <label htmlFor="email">Email Address</label>
+                <input type="text" id="email" name="email" placeholder="Email Address" value={email} onChange={(e) => setEmail(e.target.value)}/>
                 <label htmlFor="password">Password</label>
                 <div className="show-pass-row">
                     <input type={showPassword ? 'text' : 'password'} id="password" name="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
