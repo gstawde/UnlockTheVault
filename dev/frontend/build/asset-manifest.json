@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d2a09cea.css",
+    "main.js": "/static/js/main.8f859172.js",
+    "static/js/453.8ab44547.chunk.js": "/static/js/453.8ab44547.chunk.js",
+    "static/media/unlockLogo.png": "/static/media/unlockLogo.5ea57db510a2a2055c7d.png",
+    "static/media/unlockFullLogo.png": "/static/media/unlockFullLogo.fb6c2fc5aafbb2691f6e.png",
+    "index.html": "/index.html",
+    "main.d2a09cea.css.map": "/static/css/main.d2a09cea.css.map",
+    "main.8f859172.js.map": "/static/js/main.8f859172.js.map",
+    "453.8ab44547.chunk.js.map": "/static/js/453.8ab44547.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d2a09cea.css",
+    "static/js/main.8f859172.js"
+  ]
+}
