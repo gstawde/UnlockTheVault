@@ -8,20 +8,8 @@ import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [user, setUser] = useState(null);
-
-    // useEffect(() => {
-    //     (async () => {
-    //         try {
-    //             const resp = await httpClient.get("http://127.0.0.1:5000/@me");
-    //             setUser(resp.data);
-    //             console.log("Currently logged in")
-    //             // window.location.href = "/user-dashboard";
-    //         } catch (error) {
-    //             console.log("Not authenticated");
-    //         }
-    //     })();
-    // }, []);
+    const [userID, setUserID] = useState(null);
+    const [userEmail, setUserEmail] = useState(null);
 
     const [showPassword, setShowPassword] = useState(false);
     const handleTogglePassword = (e) => {
@@ -32,6 +20,16 @@ const Login = () => {
     // Notifies user of what's wrong with their form input
     const notify = (warning) => toast.error(warning);
 
+    // const test = async () => {
+    //     try {
+    //         const resp = await httpClient.get("http://127.0.0.1:5000/@me");
+    //         console.log(resp);
+    //         // window.location.href = "/user-dashboard";
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // };
+
     const handleLogin = async () => {
         if (username.trim() === '' || password.trim() === '') {
             notify('You missed a spot! Make sure to provide both a username AND password.');
@@ -41,8 +39,9 @@ const Login = () => {
                     username,
                     password,
                 });
-                window.location.href = "/user-dashboard";
+                // window.location.href = "/user-dashboard";
                 console.log("Correct credentials!");
+                // await test();
             } catch (e) {
                 if (e.response.status === 401) {
                     notify('Invalid credentials. Try again.')

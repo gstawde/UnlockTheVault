@@ -2,7 +2,6 @@ import './sign-up.css';
 import UnlockLogo from '../assets/unlockLogo.png';
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import bcrypt from 'bcryptjs';
 import { Slide, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import httpClient from "../httpClient.ts";
