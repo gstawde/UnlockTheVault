@@ -39,7 +39,7 @@ const Login = () => {
                     username,
                     password,
                 });
-                // window.location.href = "/user-dashboard";
+                window.location.href = "/user-dashboard";
                 console.log("Correct credentials!");
                 // await test();
             } catch (e) {
